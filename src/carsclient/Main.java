@@ -5,7 +5,6 @@
  */
 package carsclient;
 
-import java.io.IOException;
 import java.net.Socket;
 
 /**
@@ -20,18 +19,7 @@ public class Main {
     public static void main(String[] args) {
         
         Socket socket = null;
-        Client client;
-        
-        try {
-            System.out.println("Demande de connexion");
-            socket = new Socket("127.0.0.1",42424);
-            
-            client = new Client(socket);
-            //socket.close();
-            
-        } catch (IOException ex) {
-            System.out.println("BUG");
-        }
+        Client client = new Client();
     }
     
 }

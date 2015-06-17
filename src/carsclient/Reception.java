@@ -16,9 +16,10 @@ import java.io.IOException;
 public class Reception implements Runnable {
 
     private BufferedReader in;
+    private Connexion co;
     private String message = null;
 
-    public Reception(BufferedReader in){
+    public Reception(BufferedReader in, Connexion co){
 
         this.in = in;
     }
@@ -30,7 +31,9 @@ public class Reception implements Runnable {
             try {
 
                 message = in.readLine();
-                System.out.println("Le serveur vous dit :" +message);
+                if(message.substring(0, 2) == "00"){
+                    co.start();
+                }
 
                 } catch (IOException e) {
 

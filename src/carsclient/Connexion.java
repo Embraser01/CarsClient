@@ -8,12 +8,7 @@ package carsclient;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.Socket;
-import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,24 +24,109 @@ public class Connexion implements Runnable{
     private Scanner scan = null;
     private String adresseIp = null;
     private String numeroPort = null;
+    
+    private boolean up = false;
+    private boolean right = false;
+    private boolean down = false;
+    private boolean left = false;
+    
+    private boolean modif = true;
+    private boolean actif = false;
+    
 
     public Connexion(Socket socket) {
         this.socket = socket;
         
+    }
+    
+    public void start(){
+        this.actif = true;
     }
 
     @Override
     public void run() {
         
         Emission emission = new Emission(socket);
-        emission.emettre("TROLOLOL");
+        
         Thread threadReception = null;
         
         try {
-            threadReception = new Thread(new Reception(new BufferedReader(new InputStreamReader(socket.getInputStream()))));
+            threadReception = new Thread(new Reception(new BufferedReader(new InputStreamReader(socket.getInputStream())),this));
         } catch (IOException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         threadReception.start();
+        
+        while(true){
+            if(actif)
+                break;
+        }
+        
+        while(true){
+            if(modif){
+                modif = false;
+                
+                if(up){
+                    emission.emettre("10 - Avancer");
+                }
+                else{
+                    emission.emettre("20 - Stop Avancer");
+                }
+                
+                if(right){
+                    emission.emettre("11 - Droite");
+                }
+                else{
+                    emission.emettre("21 - Stop Droite");
+                }
+                
+                if(down){
+                    emission.emettre("12 - Arrière");
+                }
+                else{
+                    emission.emettre("22 - Stop Arrière");
+                }
+                
+                if(left){
+                    emission.emettre("13 - Gauche");
+                }
+                else{
+                    emission.emettre("23 - Stop Gauche");
+                }
+            }
+        }
+    }
+    
+    
+    public boolean isUp() {
+        return up;
+    }
+
+    public void setUp(boolean up) {
+        this.up = up;
+    }
+
+    public boolean isRight() {
+        return right;
+    }
+
+    public void setRight(boolean right) {
+        this.right = right;
+    }
+
+    public boolean isDown() {
+        return down;
+    }
+
+    public void setDown(boolean down) {
+        this.down = down;
+    }
+
+    public boolean isLeft() {
+        return left;
+    }
+
+    public void setLeft(boolean left) {
+        this.left = left;
     }
 }
