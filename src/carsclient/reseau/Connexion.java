@@ -104,6 +104,7 @@ public class Connexion implements Runnable{
 
     public void setUp(boolean up) {
         this.up = up;
+        modif = true;
     }
 
     public boolean isRight() {
@@ -112,6 +113,7 @@ public class Connexion implements Runnable{
 
     public void setRight(boolean right) {
         this.right = right;
+        modif = true;
     }
 
     public boolean isDown() {
@@ -120,6 +122,7 @@ public class Connexion implements Runnable{
 
     public void setDown(boolean down) {
         this.down = down;
+        modif = true;
     }
 
     public boolean isLeft() {
@@ -128,5 +131,6 @@ public class Connexion implements Runnable{
 
     public void setLeft(boolean left) {
         this.left = left;
+        modif = true;
     }
 }

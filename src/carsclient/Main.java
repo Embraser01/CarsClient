@@ -5,9 +5,6 @@
  */
 package carsclient;
 
-import carsclient.reseau.Client;
-import java.net.Socket;
-
 /**
  *
  * @author Marc-Antoine
@@ -19,8 +16,7 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        Socket socket = null;
-        Client client = new Client();
+        MaFenetre fen = new MaFenetre();
     }
     
 }
