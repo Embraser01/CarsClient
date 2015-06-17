@@ -5,6 +5,7 @@
  */
 package carsclient;
 
+import carsclient.reseau.Client;
 import java.net.Socket;
 
 /**
