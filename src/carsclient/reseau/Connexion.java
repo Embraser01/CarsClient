@@ -25,13 +25,13 @@ public class Connexion implements Runnable{
     private String adresseIp = null;
     private String numeroPort = null;
     
-    private boolean up = false;
-    private boolean right = false;
-    private boolean down = false;
-    private boolean left = false;
+    private volatile boolean up = false;
+    private volatile boolean right = false;
+    private volatile boolean down = false;
+    private volatile boolean left = false;
     
-    private boolean modif = true;
-    private boolean actif = false;
+    private volatile boolean modif = true;
+    private volatile boolean actif = false;
     
 
     public Connexion(Socket socket) {
@@ -41,6 +41,7 @@ public class Connexion implements Runnable{
     
     public void start(){
         this.actif = true;
+        System.out.println("JEEJ");
     }
 
     @Override
@@ -61,7 +62,7 @@ public class Connexion implements Runnable{
             if(actif)
                 break;
         }
-        
+        System.out.println("Activation communication");
         while(true){
             if(modif){
                 modif = false;

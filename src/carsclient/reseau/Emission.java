@@ -29,6 +29,7 @@ public class Emission {
     
     public void emettre(String message){
         if(out != null){
+            System.out.println("Envoi : " + message);
             out.println(message);
             out.flush();
         }

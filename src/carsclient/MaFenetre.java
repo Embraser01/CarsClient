@@ -23,7 +23,7 @@ public class MaFenetre extends JFrame implements KeyListener{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         
-        client = new Client();
+        client = new Client("192.168.43.126");
         
         this.addKeyListener(this);
         

@@ -20,7 +20,7 @@ public class Reception implements Runnable {
     private String message = null;
 
     public Reception(BufferedReader in, Connexion co){
-
+        this.co = co;
         this.in = in;
     }
 
@@ -31,7 +31,9 @@ public class Reception implements Runnable {
             try {
 
                 message = in.readLine();
-                if(message.substring(0, 2) == "00"){
+                System.out.println(message);
+                System.out.println("Fin du message");
+                if("00".equals(message.substring(0, 2))){
                     co.start();
                 }
 
