@@ -23,7 +23,7 @@ public class ImageCam extends JComponent{
     
     public static Image getFile(){ 
         try {  
-            URL url = new URL("http://192.168.43.42/cam_pic.php");
+            URL url = new URL("http://192.168.1.12/cam_pic.php");
             return(ImageIO.read(url));
         }   
         catch (IOException e) {  
