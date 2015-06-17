@@ -25,6 +25,7 @@ public class MaFenetre extends JFrame implements KeyListener{
     public MaFenetre() {
         this.setTitle("Semaine Spé 2 2015 | Client Interface");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(this.getParent());
         this.setVisible(true);
         
         client = new Client("192.168.43.42");
