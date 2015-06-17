@@ -6,9 +6,12 @@
 package carsclient;
 
 import carsclient.reseau.Client;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -17,6 +20,7 @@ import javax.swing.JFrame;
 public class MaFenetre extends JFrame implements KeyListener{
 
     Client client;
+    ImageCam cam;
     
     public MaFenetre() {
         this.setTitle("Semaine Spé 2 2015 | Client Interface");
@@ -25,8 +29,29 @@ public class MaFenetre extends JFrame implements KeyListener{
         
         client = new Client("192.168.43.42");
         
+        
+        cam = new ImageCam();
+        
+        JPanel pano = new JPanel(new GridBagLayout());
+        
+        GridBagConstraints cont = new GridBagConstraints();
+        cont.fill = GridBagConstraints.BOTH;
+        
+        
+        cont.gridx = 0;
+        cont.gridy = 0;
+        pano.add(cam,cont);
+        
+        
+        
+        this.setContentPane(pano);
+        this.pack();
+        
         this.addKeyListener(this);
         
+        while(true){
+            cam.repaint();
+        }
     }
 
     
