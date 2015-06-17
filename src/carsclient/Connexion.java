@@ -40,13 +40,13 @@ public class Connexion implements Runnable{
         
         Emission emission = new Emission(socket);
         emission.emettre("TROLOLOL");
-        /*Thread threadReception = null;
+        Thread threadReception = null;
         
         try {
             threadReception = new Thread(new Reception(new BufferedReader(new InputStreamReader(socket.getInputStream()))));
         } catch (IOException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        threadReception.start();*/
+        threadReception.start();
     }
 }

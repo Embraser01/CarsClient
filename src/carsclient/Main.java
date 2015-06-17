@@ -23,6 +23,7 @@ public class Main {
         Client client;
         
         try {
+            System.out.println("Demande de connexion");
             socket = new Socket("127.0.0.1",42424);
             
             client = new Client(socket);
